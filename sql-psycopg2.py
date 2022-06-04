@@ -1,8 +1,10 @@
 # pip3 install psycopg2
+# pip3 install SQLAlchemy
 # set_pg (ALWAYS REMEMBER THIS)
 import psycopg2
 
-# connect to chinook database
+
+# connect to "chinook" database
 connection = psycopg2.connect(database="chinook")
 
 # build a cursor object of the database
@@ -23,7 +25,8 @@ cursor = connection.cursor()
 # Query 5 - select only the albums with "ArtistId" #51 on the "Album" table
 # cursor.execute('SELECT * FROM "Album" WHERE "ArtistId" = %s', [51])
 
-# Query 6 - select all tracks where the composer is "Queen" from "Track" table
+# Query 6 - select all tracks where the composer is "Queen"
+# from the "Track" table
 cursor.execute('SELECT * FROM "Track" WHERE "Composer" = %s', ["Queen"])
 
 # fetch the results (multiple)
