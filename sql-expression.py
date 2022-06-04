@@ -1,3 +1,8 @@
+# pip3 install psycopg2
+# pip3 install SQLAlchemy
+# set_pg (ALWAYS REMEMBER THIS and do in all terminals you open)
+# CREATE DATABASE chinook; (ALWAYS REMEMBER THIS and do in all open terminals)
+# \i Chinook_PostgreSql.sql (ALWAYS REMEMBER THIS and do in all open terminals)
 from sqlalchemy import (
     create_engine, Table, Column, Float, ForeignKey, Integer, String, MetaData
 )
@@ -40,30 +45,26 @@ track_table = Table(
 with db.connect() as connection:
 
     # Query 1 - select all records from the "Artist" table
-    select_query = artist_table.select()
+    # slt_query = artist_table.select()
 
     # Query 2 - select only the "Name" column from the "Artist" table
-    # select_query = artist_table.select().with_only_columns(
-    # [artist_table.c.Name])
+    slt_query = artist_table.select().with_only_columns([artist_table.c.Name])
 
     # Query 3 - select only 'Queen' from the "Artist" table
-    # select_query = artist_table.select().where
+    # slt_query = artist_table.select().where
     # (artist_table.c.Name == "Queen")
 
     # Query 4 - select only by 'ArtistId' #51 from the "Artist" table
-    # select_query = artist_table.select().where
+    # slt_query = artist_table.select().where
     # (artist_table.c.ArtistId == 51)
 
     # Query 5 - select only the albums with 'ArtistId' #51 on the "Album" table
-    # select_query = album_table.select().where
-    # (album_table.c.ArtistId == 51)
+    # slt_query = album_table.select().where(album_table.c.ArtistId == 51)
 
     # Query 6 - select all tracks where the composer is 'Queen'
     # from the "Track" table
+    slt_query = track_table.select().where(track_table.c.Composer == "Queen")
 
-    # select_query = track_table.select().where
-    # (track_table.c.Composer == "Queen")
-
-    results = connection.execute(select_query)
+    results = connection.execute(slt_query)
     for result in results:
         print(result)
