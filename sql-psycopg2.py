@@ -1,10 +1,15 @@
+# set_pg (ALWAYS REMEMBER THIS and do in all terminals you open)
 # pip3 install psycopg2
+# python -m pip install --upgrade pip
 # pip3 install SQLAlchemy
-# set_pg (ALWAYS REMEMBER THIS)
-# CREATE DATABASE chinook; (ALWAYS REMEMBER THIS)
-# \i Chinook_PostgreSql.sql (ALWAYS REMEMBER THIS)
-import psycopg2
 
+# Type psql
+# CREATE DATABASE chinook; (ALWAYS REMEMBER THIS and do in all open terminals)
+# \i Chinook_PostgreSql.sql (ALWAYS REMEMBER THIS and do in all open terminals)
+
+# python3 + (name of file to run)
+
+import psycopg2
 
 # connect to "chinook" database
 connection = psycopg2.connect(database="chinook")
